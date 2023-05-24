@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8088
   servlet:
     context-path: /mj
 logging:
@@ -23,10 +23,10 @@ knife4j:
           - com.github.novicezk.midjourney.controller
 mj:
   discord:
-    guild-id: xxx
-    channel-id: xxx
-    user-token: xxx
-    bot-token: xxx
+    guild-id: 1045592780153565195
+    channel-id: 1045592780698812477
+    user-token: ODY1OTA2OTA3MDQ5ODg1NzA3.Ge35p4.yF6bv44FkKBR9Pe7KjgD9bCCyLHhbDeoowsLfk
+    bot-token: MTExMDQ2NDEzMjY1NTg4MjI0MA.GVVZwl.uMrpI1qboSm9l91kTRSKCLiwDJA37bbyZk0aL8
   task-store:
     type: in_memory
     timeout: 30d

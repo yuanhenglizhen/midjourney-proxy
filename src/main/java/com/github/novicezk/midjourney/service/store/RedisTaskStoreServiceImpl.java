@@ -9,10 +9,7 @@ import org.springframework.data.redis.core.ScanOptions;
 import org.springframework.data.redis.core.ValueOperations;
 
 import java.time.Duration;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RedisTaskStoreServiceImpl implements TaskStoreService {
@@ -50,11 +47,17 @@ public class RedisTaskStoreServiceImpl implements TaskStoreService {
 		if (keys == null || keys.isEmpty()) {
 			return Collections.emptyList();
 		}
+//		ValueOperations<String, Task> operations = this.redisTemplate.opsForValue();
+//		return keys.stream().map(operations::get)
+//				.filter(Objects::nonNull)
+//				.toList();
 		ValueOperations<String, Task> operations = this.redisTemplate.opsForValue();
 		return keys.stream().map(operations::get)
 				.filter(Objects::nonNull)
-				.toList();
+				.collect(Collectors.toList());
+
 	}
+
 
 	private String getRedisKey(String id) {
 		return KEY_PREFIX + id;

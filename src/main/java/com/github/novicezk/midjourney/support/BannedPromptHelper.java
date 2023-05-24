@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Pattern;
@@ -24,7 +25,14 @@ public class BannedPromptHelper {
 			var resource = BannedPromptHelper.class.getResource("/banned-words.txt");
 			lines = FileUtil.readLines(resource, StandardCharsets.UTF_8);
 		}
-		this.bannedWords = lines.stream().filter(CharSequenceUtil::isNotBlank).toList();
+//		this.bannedWords = lines.stream().filter(CharSequenceUtil::isNotBlank).toList();
+
+		bannedWords = new ArrayList<>();
+		for (String line : lines) {
+			if (CharSequenceUtil.isNotBlank(line)) {
+				bannedWords.add(line);
+			}
+		}
 	}
 
 	public boolean isBanned(String promptEn) {

@@ -1,4 +1,4 @@
-FROM openjdk:17.0
+FROM openjdk:11.0
 
 ARG user=spring
 ARG group=spring
